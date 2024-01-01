@@ -19,8 +19,6 @@
 .right {
   width: 75vw;
   margin: 16px;
-  max-height: 92vh;
-  overflow-y: scroll;
 }
 
 .home ul li {
@@ -79,12 +77,15 @@
   gap: 10px;
   flex-wrap: wrap;
   margin: 30px;
+  max-height: 60vh;
+  overflow-y: scroll;
 }
 .card {
   width: 180px;
   padding: 10px;
   border-radius: 5px;
   background-color: #2b2828;
+  position: relative;
 }
 
 .card > * {
@@ -94,4 +95,14 @@
 .card img {
   width: 100%;
   object-fit: contain;
+}
+
+.play-card-btn {
+  position: absolute;
+  top: 250px;
+  right: 30px;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: all 1s ease-in-out;
 }

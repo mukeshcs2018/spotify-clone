@@ -39,3 +39,25 @@
 .p-1 {
   padding: 10px;
 }
+
+/* For Webkit browsers (Chrome, Safari, etc.) */
+::-webkit-scrollbar {
+  width: 12px; /* Set the width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #333; /* Set the color of the scrollbar thumb (the draggable part) */
+  border-radius: 6px; /* Set the border radius for a rounded appearance */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #666; /* Set the color of the scrollbar track (the area behind the thumb) */
+}
+
+/* For Firefox */
+/* Note: Firefox does not support customizing the scrollbar appearance with CSS as of my last knowledge update in January 2022. */
+
+/* For Microsoft Edge and Internet Explorer */
+/* Note: Edge and IE also have limited support for customizing the scrollbar appearance with CSS. You can use proprietary pseudo-elements like ::-ms-scrollbar-thumb, ::-ms-scrollbar-track, etc. */
+
+/* For cross-browser compatibility, you might want to use a JavaScript-based solution or a library like PerfectScrollbar if you need extensive customization. */

@@ -19,6 +19,7 @@
 .right {
   width: 75vw;
   margin: 16px;
+  position: relative;
 }
 
 .home ul li {
@@ -64,6 +65,8 @@
 .header {
   justify-content: space-between;
   background-color: #1e1e1e;
+  min-height: 90px;
+  align-items: center;
 }
 .header > * {
   padding: 20px;
@@ -105,4 +108,48 @@
   align-items: center;
   opacity: 0;
   transition: all 1s ease-in-out;
+}
+
+.signup-btn {
+  background-color: #1e1e1e;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons > * {
+  margin: 0 12px;
+}
+
+.signup-btn:hover {
+  font-size: 17px;
+  color: white;
+}
+
+.login-btn {
+  width: 75px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 0;
+  height: 40px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-btn:hover {
+  font-weight: bold;
+  width: 77px;
+  height: 42px;
+  background-color: rgb(212, 211, 211);
+}
+
+.playbar {
+  position: absolute;
+  bottom: 0;
 }

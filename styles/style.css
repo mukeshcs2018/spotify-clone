@@ -204,3 +204,21 @@
   width: 60px;
   padding: 15px;
 }
+
+.seekbar {
+  border-radius: 10px;
+  height: 2px;
+  width: 98%;
+  border: 2px solid black;
+  position: absolute;
+  bottom: 3px;
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 13px;
+  background-color: blue;
+  position: relative;
+  bottom: 4px;
+}

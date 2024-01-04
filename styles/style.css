@@ -18,7 +18,7 @@
 
 .right {
   width: 75vw;
-  margin: 16px;
+  margin: 15px;
   position: relative;
 }
 
@@ -87,7 +87,7 @@
   width: 180px;
   padding: 10px;
   border-radius: 5px;
-  background-color: #765a5a;
+  background-color: #064065;
   position: relative;
 }
 
@@ -150,10 +150,10 @@
 }
 
 .playbar {
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  bottom: 20px;
   background-color: green;
-  width: 92%;
+  width: 65vw;
   padding: 12px;
   border-radius: 7px;
   justify-content: space-evenly;
@@ -165,4 +165,42 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
+}
+
+.songs-list ul {
+  padding: 0 8px;
+}
+
+.songs-list {
+  height: 460px;
+  overflow: auto;
+  margin-bottom: 20px;
+}
+
+.songs-list .info {
+  font-size: 13px;
+  width: 344px;
+}
+.songs-list ul li {
+  list-style-type: decimal;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  margin: 9px;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 8px;
+}
+
+.play-now {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.play-now span {
+  font-size: 10px;
+  width: 60px;
+  padding: 15px;
 }

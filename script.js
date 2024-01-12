@@ -1,5 +1,7 @@
 "use strict";
 
+let currentSong = new Audio;
+
 async function fetchSong() {
   let url = await fetch("http://127.0.0.1:3000/songs/");
   let response = await url.text();
@@ -20,7 +22,17 @@ async function fetchSong() {
   return songs;
 }
 
+function playMusic(track){
+  // let audio = new Audio("/songs/" + track);
+  // audio.play();
+  currentSong.src = "/songs/" + track;
+  currentSong.play();
+}
+
 async function main() {
+
+
+
   let songs = await fetchSong();
 
   let songUL = document
@@ -40,6 +52,14 @@ async function main() {
     </div>
   </li>`;
   }
+
+  Array.from(document.querySelector(".songs-list").getElementsByTagName("li")).forEach( e => {
+    e.addEventListener("click", element=>{
+      
+      //playMusic function
+      playMusic(e.querySelector(".info").firstElementChild.innerHTML);
+    })
+  })
 }
 
 main();

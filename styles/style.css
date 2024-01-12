@@ -150,8 +150,8 @@
 }
 
 .playbar {
-  position: fixed;
-  bottom: 20px;
+  position: absolute;
+  bottom: 5px;
   background-color: green;
   width: 65vw;
   padding: 12px;
@@ -207,7 +207,7 @@
 
 .seekbar {
   border-radius: 10px;
-  height: 2px;
+  height: 4px;
   width: 98%;
   border: 2px solid black;
   position: absolute;
@@ -215,10 +215,16 @@
 }
 
 .circle {
-  width: 10px;
+  width: 12px;
   height: 10px;
   border-radius: 13px;
   background-color: blue;
   position: relative;
   bottom: 4px;
+  left: 0%;
+  transition: 0.5s;
+}
+
+.music-control-btn img{
+  cursor: pointer;
 }

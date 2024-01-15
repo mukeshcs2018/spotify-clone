@@ -1,65 +1,106 @@
-"use strict";
 
-let currentSong = new Audio;
+let audio = new Audio;
 
-async function fetchSong() {
-  let url = await fetch("http://127.0.0.1:3000/songs/");
-  let response = await url.text();
+let currentSongIndex =  0
+ 
+
+
+async function fetchSongs(){
+  let response = await fetch("http://127.0.0.1:3000/songs/");
+  response = await response.text();
   let div = document.createElement("div");
   div.innerHTML = response;
 
-  let as = div.getElementsByTagName("a");
+  let aTags = div.getElementsByTagName('a')
 
-  let songs = [];
+  songs = [];
 
-  for (let index = 0; index < as.length; index++) {
-    const element = as[index];
-
-    if (element.href.endsWith(".mp3")) {
-      songs.push(element.href.split("/songs/")[1]);
+  for(let i = 0; i<aTags.length; i++){
+    const ele = aTags[i];
+    if(ele.href.endsWith('.mp3')){
+      songs.push(ele.href);
     }
   }
-  return songs;
+  
+  return songs;  
 }
 
-function playMusic(track){
-  // let audio = new Audio("/songs/" + track);
-  // audio.play();
-  currentSong.src = "/songs/" + track;
-  currentSong.play();
-}
-
-async function main() {
-
-
-
-  let songs = await fetchSong();
-
-  let songUL = document
-    .querySelector(".songs-list")
-    .getElementsByTagName("ul")[0];
-
-  for (const song of songs) {
-    songUL.innerHTML += `<li>
+function displaySongsInLib(songs){
+  let songsUl = document.getElementsByClassName('songs-list')[0].querySelector("ul");
+  for(const song of songs){
+    songsUl.innerHTML += `<li>
     <img class="invert" src="./svgs/music.svg" alt="" />
     <div class="info">
-      <div>${song.replaceAll("%20", " ")}</div>
-      <div>Nigga</div>
+      <div>${decodeURI(song).split("/songs/")[1].split('-')[0]}</div>
+      <div>Artist: ${decodeURI(song).split("/songs/")[1].split('-')[1].split('.')[0]}</div>
     </div>
     <div class="play-now">
       <span>Play Now</span>
       <img class="invert" src="./svgs/play.svg" alt="" />
     </div>
-  </li>`;
+  </li>`
   }
-
-  Array.from(document.querySelector(".songs-list").getElementsByTagName("li")).forEach( e => {
-    e.addEventListener("click", element=>{
-      
-      //playMusic function
-      playMusic(e.querySelector(".info").firstElementChild.innerHTML);
-    })
-  })
 }
+
+
+function playMusic(currentSongIndex, songsDir){
+  let currentSongURI = songsDir[currentSongIndex];
+
+  let currentSongName = decodeURI(currentSongURI).split("/songs/")[1].split('-')[0];
+
+  document.getElementById('song-name').innerHTML = currentSongName;
+
+  console.log(currentSongName)
+  audio.src = songsDir[currentSongIndex]
+  audio.play();
+}
+
+
+async function main(){
+  let songsDir = await fetchSongs();
+  displaySongsInLib(songsDir);
+
+
+  Array.from(document.querySelector(".songs-list").getElementsByTagName("li")).forEach((ele, index) =>{
+        ele.addEventListener("click", () => {
+            currentSongIndex = index
+            playMusic(currentSongIndex, songsDir);          
+        })
+  })
+
+  play.addEventListener("click",function(){
+    if(!audio.paused){
+      audio.pause()
+      play.src = "/svgs/play-btn.svg"
+    }
+    else{
+      audio.play();
+      playMusic(currentSongIndex, songsDir);
+      play.src = "/svgs/paused.svg"
+    }
+  })
+
+  prev.addEventListener("click", ()=>{
+    currentSongIndex -= 1;
+
+    if(currentSongIndex >= 0){
+      playMusic(currentSongIndex, songsDir);
+    }
+    else{
+      playMusic(0, songsDir);
+    }
+  })
+
+  next.addEventListener("click",()=>{
+    currentSongIndex += 1;
+    if(currentSongIndex < songsDir.length){
+      playMusic(currentSongIndex, songsDir)
+    }
+    else{
+        playMusic(songsDir.length - 1, songsDir)
+    }
+  })
+
+}   
 
 main();

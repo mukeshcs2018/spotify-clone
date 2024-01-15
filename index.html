@@ -33,7 +33,9 @@
             <h2>Your Library</h2>
           </div>
           <div class="songs-list">
-            <ul></ul>
+            <ul>
+              
+            </ul>
           </div>
           <div class="footer">
             <div>
@@ -76,8 +78,8 @@
             <img class="invert" src="./svgs/greaterthan.svg" alt="" />
           </div>
           <div class="buttons">
-            <button class="signup-btn">Sign Up</button>
-            <button class="login-btn">Log in</button>
+            <button class="signup-btn" id="singup">Sign Up</button>
+            <button class="login-btn" id="login">Log in</button>
           </div>
         </div>
         <div class="spotifyPlaylists">
@@ -113,13 +115,20 @@
             <div class="seekbar">
               <div class="circle"></div>
             </div>
-            <div class="info">PLaying : Chhammak Challo</div>
-            <div class="music-control-btn">
-              <img src="./svgs/previous.svg" alt="" />
-              <img class="playButton" src="./svgs/play.svg" alt="" />
-              <img src="./svgs/next.svg" alt="" />
+            <div class="music-bar">
+              <div class="song-info" id="song-name"></div>
+              <div class="music-control-btn">
+                <img id="prev" src="./svgs/previous.svg" alt="" />
+                <img
+                  id="play"
+                  class="playButton"
+                  src="./svgs/play-btn.svg"
+                  alt=""
+                />
+                <img id="next" src="./svgs/next.svg" alt="" />
+              </div>
+              <div class="song-duration">1 : 30 : 00</div>
             </div>
-            <div class="song-timer">1 : 30 : 00</div>
           </div>
         </div>
       </div>

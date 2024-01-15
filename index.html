@@ -112,9 +112,11 @@
             </div>
           </div>
           <div class="playbar">
-            <div class="seekbar">
+            <!-- <div class="seekbar">
+              
               <div class="circle"></div>
-            </div>
+            </div> -->
+            <input class="seekbar" type="range" min="0" max="100" value="0" oninput="onChangeInput()">
             <div class="music-bar">
               <div class="song-info" id="song-name"></div>
               <div class="music-control-btn">
@@ -127,7 +129,7 @@
                 />
                 <img id="next" src="./svgs/next.svg" alt="" />
               </div>
-              <div class="song-duration">1 : 30 : 00</div>
+              <div class="song-duration">00:00/00:00</div>
             </div>
           </div>
         </div>

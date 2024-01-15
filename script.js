@@ -1,12 +1,13 @@
-
 let audio = new Audio;
-
 let currentSongIndex =  0
- 
+
 
 
 async function fetchSongs(){
-  let response = await fetch("./songs/");
+
+  let songUri = "./tree/main/songs/"
+
+  let response = await fetch(songUri);
   response = await response.text();
   let div = document.createElement("div");
   div.innerHTML = response;

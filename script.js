@@ -5,7 +5,7 @@ let currentSongIndex =  0
 
 async function fetchSongs(){
 
-  let songUri = "https://github.com/mukeshcs2018/spotify-clone/blob/main/songs/"
+  let songUri = "https://cors-anywhere.herokuapp.com/https://github.com/mukeshcs2018/spotify-clone/tree/main/songs/"
 
   let response = await fetch(songUri);
   response = await response.text();

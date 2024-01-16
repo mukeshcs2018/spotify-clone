@@ -233,3 +233,9 @@
   display: flex;
   justify-content: space-between;
 }
+
+@media (max-width: 1200px) {
+  .left{
+    background-color: red;
+  }
+}

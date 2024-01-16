@@ -5,7 +5,7 @@ let currentSongIndex =  0
 
 async function fetchSongs(){
 
-  let songUri = "https://cors-anywhere.herokuapp.com/https://github.com/mukeshcs2018/spotify-clone/tree/main/songs/"
+  let songUri = "./songs/";
 
   let response = await fetch(songUri);
   response = await response.text();
@@ -52,8 +52,8 @@ function displaySongsInLib(songs){
 
 
 function playMusic(currentSongIndex, songsDir){
+  let currentSongName = decodeURI(songsDir[currentSongIndex]).split('/songs/')[1].split('-')[0];
 
-  let currentSongName = decodeURI(songsDir[currentSongIndex]).split("./songs/")[1].split('-')[0];
 
   document.getElementById('song-name').innerHTML = currentSongName;
   audio.src = songsDir[currentSongIndex];
@@ -68,7 +68,8 @@ function playMusic(currentSongIndex, songsDir){
     
     let seekbar = document.querySelector(".seekbar")
     seekbar.max = audio.duration
-    seekbar.value = audio.currentTime  
+    seekbar.value = audio.currentTime
+    
 
   })
 
@@ -125,13 +126,10 @@ async function main(){
     }
   });
   
-
-
-//  currentSongIndex = 1
     
   prev.addEventListener("click", ()=>{
 
-    if(currentSongIndex >= 0){
+    if(currentSongIndex > 0){
       playMusic(currentSongIndex-=1, songsDir);
     }
     else{
@@ -142,14 +140,16 @@ async function main(){
   next.addEventListener("click",()=>{
 
     if(currentSongIndex < songsDir.length-1){
-      playMusic(currentSongIndex += 1, songsDir)
+      playMusic(currentSongIndex += 1, songsDir);
     }
     else{
-        playMusic(songsDir.length - 1, songsDir)
+        playMusic(songsDir.length - 1, songsDir);
     }
   })
-
 
 }   
 
 main();
+
+
+
